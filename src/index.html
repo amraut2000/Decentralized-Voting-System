@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Election Results</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div style="background-color: antiquewhite;">
+    <div id="timeForm" class="container" style="width: 650px;">
+      <h1 class="text-center">Set The Duration Of Voting</h1>
+      <br>
+      <div class="text-center">
+        <form onSubmit="App.setDuration(); return false;">
+          <h4>Time in hours: <input id="inputTime" type="number" name="timePeriod"></h4>
+          <button type="submit" class="btn btn-warning" style="border-color:blue;">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+    <br>
+    <div id="registerForm" class="container" style="width: 650px;">
+      <br>
+      <div>
+        <h1 class="text-center">Register The Voters First</h1>
+      </div>
+      <br>
+      <div class="text-center">
+        <form onSubmit="App.register(); return false;">
+          <h4>Voter's Address: <input id="inputAddress" type="text" name="address"></h4>
+          <button type="submit" class="btn btn-success" style="border-color: darkmagenta;">REGISTER</button>
+        </form>
+        <br>
+      </div>
+    </div>
+
+    <div id="electionResult" class="container" style="width: 650px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="text-center">Election Results</h1>
+          <hr />
+          <br />
+          <div id="loader">
+            <p class="text-center">Loading...</p>
+          </div>
+          <div id="content" style="display: none;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Votes</th>
+                </tr>
+              </thead>
+              <tbody id="candidatesResults">
+              </tbody>
+            </table>
+            <hr />
+            <div id="voteForm">
+              <form onSubmit="App.castVote(); return false;">
+                <div class="form-group">
+                  <label for="candidatesSelect">Select Candidate</label>
+                  <select class="form-control" id="candidatesSelect">
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">VOTE</button>
+                <hr />
+              </form>
+            </div>
+            <p id="accountAddress" class="text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div id="resultAll" >
+      <div class="container text-center" style="width: 650px;">
+        <form id="seeResultButton" onSubmit="App.seeResult(); return false;">
+          <button style="background-color: darkorchid;" type="submit" class="btn btn-warning">SEE EXTRA INFO</button>
+        </form>
+      </div>
+      <div id="resultDiv" class="container text-center" style="width: 650px;">
+        <h1>Results</h1>
+        <h3 id="winner"></h3>
+        <h4 id="registeredCount"></h4>
+        <h4 id="votedCount"></h4>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
